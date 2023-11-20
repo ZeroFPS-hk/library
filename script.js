@@ -1,6 +1,17 @@
+const addBookStartButton = document.querySelector("button#add-book-start");
+const addBookEndButton = document.querySelector("button#add-book-complete");
+const addBookDialogue = document.querySelector("dialog#add-book-form");
+const inputTitle = document.querySelector("input#title");
+const inputAuthor = document.querySelector("input#author");
+const inputPages = document.querySelector("input#pages");
+const inputRead = document.querySelector("select#read");
 const libraryTable = document.querySelector("#library-table");
 
 const myLibrary = [];
+
+window.onload = ()=> displayLibrary();
+addBookStartButton.addEventListener("click", ()=> addBookDialogue.showModal());
+addBookEndButton.addEventListener("click", addNewBook);
 
 function Book(title, author, pages, isRead){
     this.title = title;
@@ -26,8 +37,16 @@ function displayLibrary(){
     }
 }
 
-function addNewBook(){
-
+function addNewBook(event){
+    event.preventDefault();
+    const isRead = inputRead.value? true: false;
+    const newBook = new Book(inputTitle.value, inputAuthor.value, inputPages.value, isRead);
+    addBookToLibrary(newBook);
+    inputTitle.value = "";
+    inputAuthor.value = "";
+    inputPages.value = "";
+    inputRead.value = "1";
+    addBookDialogue.close();
 }
 
 function createLibraryHeaderRow(tableRow){

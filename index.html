@@ -8,6 +8,22 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <div class="introduction"></div>
+    <div class="button-container"><button id="add-book-start" type="button">Add a new book!</button></div>
+    <dialog id="add-book-form">
+        <label for="title">Book title:</label>
+        <input type="text" name="title" id="title">
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author">
+        <label for="pages">Pages:</label>
+        <input type="number" name="pages" id="pages" min="0" max="9999">
+        <label for="read">Have you read the book?</label>
+        <select name="read" id="read">
+            <option value="1" selected>Yes</option>
+            <option value="">No</option>    <!--leave value empty for script to work-->
+        </select>
+        <button id="add-book-complete" type="submit">Add book</button>
+    </dialog>
     <div id="library-container">
         <table id="library-table"></table>
     </div>
