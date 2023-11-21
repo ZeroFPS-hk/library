@@ -54,7 +54,8 @@ function createLibraryHeaderRow(tableRow){
     createTableHeader(tableRow, "Author");
     createTableHeader(tableRow, "Pages");
     createTableHeader(tableRow, "Status");
-    createTableHeader(tableRow, "Mark read");
+    createTableHeader(tableRow, "Toggle read");
+    createTableHeader(tableRow, "Remove book");
 }
 
 function listBookInTable(tableRow, book){
@@ -64,10 +65,34 @@ function listBookInTable(tableRow, book){
         book.isRead? tableData.textContent = "Read": tableData.textContent = "Not read";  
         tableRow.appendChild(tableData);
     }
+
+    createTableDataButton(tableRow, "Toggle", "toggle-read", `${myLibrary.indexOf(book)}`, toggleRead);
+    createTableDataButton(tableRow, "X", "remove-book", `${myLibrary.indexOf(book)}`, removeBook);
 }
 
 function createTableHeader(tableRow, content){
     const tableHeader = document.createElement("th");
     tableHeader.textContent = content;
     tableRow.appendChild(tableHeader);
+}
+
+function createTableDataButton(tableRow, content="", buttonClass="", buttonId="", clickFunction){
+    const tableData = document.createElement("td");
+    const button = document.createElement("button");
+    button.textContent = content;
+    button.classList.add(buttonClass);
+    button.id = buttonId;
+    button.addEventListener("click", clickFunction);
+    tableData.appendChild(button);
+    tableRow.appendChild(tableData);
+}
+
+function toggleRead(event){
+    myLibrary[event.target.id].isRead = !myLibrary[event.target.id].isRead;
+    displayLibrary();
+}
+
+function removeBook(event){
+    myLibrary.splice(event.target.id, 1);
+    displayLibrary();
 }
