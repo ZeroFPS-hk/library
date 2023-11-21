@@ -7,7 +7,8 @@ const inputPages = document.querySelector("input#pages");
 const inputRead = document.querySelector("select#read");
 const libraryTable = document.querySelector("#library-table");
 
-const myLibrary = [];
+const exampleBook = new Book("Sherlock Holmes", "Conan", 128, true);
+const myLibrary = [exampleBook];
 
 window.onload = ()=> displayLibrary();
 addBookStartButton.addEventListener("click", ()=> addBookDialogue.showModal());
@@ -61,8 +62,14 @@ function createLibraryHeaderRow(tableRow){
 function listBookInTable(tableRow, book){
     for(const property in book){
         const tableData = document.createElement("td");
-        property !== "isRead"? tableData.textContent = book[property]:
-        book.isRead? tableData.textContent = "Read": tableData.textContent = "Not read";  
+        if(property !== "isRead") tableData.textContent = book[property];
+        else if(book.isRead){
+            tableData.textContent = "Read";
+            tableData.classList.add("read");
+        }else{
+            tableData.textContent = "Not read";
+            tableData.classList.add("not-read");
+        }
         tableRow.appendChild(tableData);
     }
 

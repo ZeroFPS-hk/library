@@ -3,7 +3,68 @@
     font-family: Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body{
+    padding: 0;
+    margin: 0;
+    background-color: beige;
+    text-align: center;
+}
+
+.introduction{
+    font-size: 1.2rem;
+    padding: 24px;
+    padding-top: 48px;
+}
+
+button{
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+button#add-book-start{
+    font-size: 1rem;
+    font-family: inherit;
+    padding: 4px 8px;
+    border-radius: 8px;
+    background-color: lime;
+}
+
+dialog div{
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+.library-container{
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+}
+
 table, th, td{
     border: 1px solid black;
     border-spacing: 0;
+}
+
+th, td{
+    padding: 1px 4px;
+}
+
+td.read{
+    color: green;
+}
+
+td.not-read{
+    color: red;
+}
+
+button.remove-book{
+    background-color: darkred;
+    color: white;
+    font-weight: bold;
+    border: 0;
+    border-radius: 8px;
+    padding: 2px 8px;
 }

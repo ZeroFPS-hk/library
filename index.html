@@ -8,23 +8,37 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="introduction"></div>
+    <div class="introduction">
+        Your own library! More like a book list. But one you can manage.<br>
+        Click the button below to add more books!
+    </div>
+
     <div class="button-container"><button id="add-book-start" type="button">Add a new book!</button></div>
+
     <dialog id="add-book-form">
-        <label for="title">Book title:</label>
-        <input type="text" name="title" id="title">
-        <label for="author">Author:</label>
-        <input type="text" name="author" id="author">
-        <label for="pages">Pages:</label>
-        <input type="number" name="pages" id="pages" min="0" max="9999">
-        <label for="read">Have you read the book?</label>
-        <select name="read" id="read">
-            <option value="1" selected>Yes</option>
-            <option value="">No</option>    <!--leave value empty for script to work-->
-        </select>
-        <button id="add-book-complete" type="submit">Add book</button>
+        <div>
+            <label for="title">Book title:</label>
+            <input type="text" name="title" id="title">
+        </div>
+        <div>
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author">
+        </div>
+        <div>
+            <label for="pages">Pages:</label>
+            <input type="number" name="pages" id="pages" min="0" max="9999">
+        </div>
+        <div>
+            <label for="read">Have you read the book?</label>
+            <select name="read" id="read">
+                <option value="1" selected>Yes</option>
+                <option value="">No</option>    <!--leave value empty for script to work-->
+            </select>
+        </div>
+        <div><button id="add-book-complete" type="submit">Add book</button></div>
     </dialog>
-    <div id="library-container">
+
+    <div class="library-container">
         <table id="library-table"></table>
     </div>
 </body>
