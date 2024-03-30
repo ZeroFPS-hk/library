@@ -7,19 +7,21 @@ const inputPages = document.querySelector("input#pages");
 const inputRead = document.querySelector("select#read");
 const libraryTable = document.querySelector("#library-table");
 
-const exampleBook = new Book("Sherlock Holmes", "Conan", 128, true);
-const myLibrary = [exampleBook];
-
 window.onload = ()=> displayLibrary();
 addBookStartButton.addEventListener("click", ()=> addBookDialogue.showModal());
 addBookEndButton.addEventListener("click", addNewBook);
 
-function Book(title, author, pages, isRead){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
+class Book{
+    constructor(title, author, pages, isRead){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+    } 
 }
+
+const exampleBook = new Book("Sherlock Holmes", "Conan", 128, true);
+const myLibrary = [exampleBook];
 
 function addBookToLibrary(book){
     myLibrary.push(book);
